@@ -1,0 +1,17 @@
+name: Demo Container action
+
+on:
+  workflow_dispatch:    
+  push:
+    paths: .github/workflows/demo-container-action.yml
+
+jobs:
+  container_action:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: lfraile-git-school/container-action@main
+        id: hello-action
+        with:
+          myInput: "Luis Fraile"
+      - name: Output time
+        run: echo "The time is ${{ steps.hello-action.outputs.time }}"
