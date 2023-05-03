@@ -18,20 +18,20 @@ jobs:
   Build:
     runs-on: ubuntu-latest
     steps: 
-    - name: Dump runner
-      run: ${{ toJSON(runner) }} 
-    - name: GitHub context
-      run: ${{ toJSON(github) }}
-    - run: |
-        echo "Event name: ${{ github.event_name }}"
-        echo "Branch name: ${{ github.ref }}"
+      - name: Dump runner
+        run: ${{ toJSON(runner) }} 
+      - name: GitHub context
+        run: ${{ toJSON(github) }}
+      - run: |
+          echo "Event name: ${{ github.event_name }}"
+          echo "Branch name: ${{ github.ref }}"
       
-    - uses: actions/checkout@v3.3.0
+      - uses: actions/checkout@v3.3.0
     
-    - name: List all file
-      run: |
-        echo "content of the repo"
-        tree
+      - name: List all file
+        run: |
+          echo "content of the repo"
+          tree
   Test:
     runs-on: ubuntu-latest
     if: github.event_name == 'workflow_dispatch'
